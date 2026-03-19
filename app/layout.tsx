@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Filamreiva Connect | CRM Automation",
+  title: "FAR Agents | CRM Automation",
   description: "Scalable CRM infrastructure and automated workflows.",
 };
 

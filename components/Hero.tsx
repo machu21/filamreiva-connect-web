@@ -8,12 +8,12 @@ export default function Hero({ onLaunchClick }: { onLaunchClick: () => void }) {
         <h1 className="text-5xl font-black tracking-tight text-brand-blue sm:text-7xl">
           Elevate Your Business <br />
           <span className="bg-gradient-to-r from-brand-red to-brand-blue bg-clip-text text-transparent">
-            with Connect
+            with FAR Agents
           </span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
           Your business doesn’t need another freelancer. It needs a backbone.
-          Filamreiva Connect designs, implements, and manages GHL infrastructure
+          Filamreiva Connect designs, implements, and manages CRM infrastructure
           that actually works—so founders spend their time scaling, not fixing broken automations.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">

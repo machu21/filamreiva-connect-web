@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand & Mission */}
           <div className="col-span-1 md:col-span-1">
             <div className="text-2xl font-black tracking-tighter text-white">
-              FILAM<span className="text-brand-red">REIVA</span>
+              FAR<span className="text-brand-red">AGENTS</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-brand-gray/60">
               Leading the shift to autonomous operations. We specialize in 
@@ -34,10 +34,10 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold tracking-wider text-brand-red uppercase">Automation</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition">CRM Implementation</a></li>
-              <li><a href="#" className="hover:text-white transition">Lead Management</a></li>
-              <li><a href="#" className="hover:text-white transition">API Integrations</a></li>
-              <li><a href="#" className="hover:text-white transition">Workflow Design</a></li>
+              <li><a href="/crm-implementation" className="hover:text-white transition">CRM Implementation</a></li>
+              <li><a href="/lead-management" className="hover:text-white transition">Lead Management</a></li>
+              <li><a href="/api-integrations" className="hover:text-white transition">API Integrations</a></li>
+              <li><a href="/workflow-design" className="hover:text-white transition">Workflow Design</a></li>
             </ul>
           </div>
 
@@ -45,10 +45,10 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold tracking-wider text-brand-red uppercase">Company</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="/about" className="hover:text-white transition">About Filamreiva</a></li>
+              <li><a href="/about" className="hover:text-white transition">About FAR Agents</a></li>
               <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
               <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition">Contact Support</a></li>
+              <li><a href="/contact" className="hover:text-white transition">Contact Support</a></li>
             </ul>
           </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-brand-gray/40">
-          <p>© {currentYear} Filamreiva Connect. All rights reserved.</p>
+          <p>© {currentYear} FAR Agents. All rights reserved.</p>
           <div className="flex gap-6">
           </div>
         </div>

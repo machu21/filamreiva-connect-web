@@ -152,7 +152,7 @@ export default function Features() {
         </div>
 
         {/* Thumbnail strip */}
-        <div className="mt-6 grid grid-cols-4 gap-3">
+        <div className="mt-6 grid grid-cols-4 gap-2">
           {features.map((f, i) => (
             <button
               key={i}

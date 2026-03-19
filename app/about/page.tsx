@@ -75,7 +75,7 @@ export default function About() {
             <span className="text-brand-red italic">Invisible Engine</span>
           </h1>
           <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Filamreiva Connect was founded on a simple premise: founders should spend their time
+            FAR Agents was founded on a simple premise: founders should spend their time
             closing deals and scaling revenue — not fixing broken Zapier zaps or manually
             tagging leads in a CRM.
           </p>
@@ -198,7 +198,7 @@ export default function About() {
                 "Your competitors aren't slowing down. Your systems shouldn't either."
               </p>
               <p className="mt-4 text-brand-red font-bold uppercase tracking-widest text-sm">
-                — Filamreiva Connect
+                — FAR Agents
               </p>
             </div>
           </div>
@@ -243,7 +243,6 @@ export default function About() {
               <div className="grid gap-4 sm:grid-cols-2 pt-2">
                 {[
                   "Buyer & seller funnel templates",
-                  "GHL sub-account architecture",
                   "A2P/SMS compliance built-in",
                   "AI-powered lead qualification",
                   "CRM pipeline automation",

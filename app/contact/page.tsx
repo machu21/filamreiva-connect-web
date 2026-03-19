@@ -24,6 +24,12 @@ const contactDetails = [
     value: "Mon – Fri, 11AM – 7PM",
     sub: "Eastern Standard Time (EST)",
   },
+    {
+    Icon: Phone,
+    label: "Phone",
+    value: "+1 (800) 123-4567",
+    sub: "Available 24/7 for urgent matters",
+  },
 ];
 
 export default function Contact() {

@@ -1,11 +1,10 @@
-"use client"; // Required for state management
+"use client";
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import ConsultationModal from "@/components/ConsultationModal";
 
 const pricingPlans = [
-  
   {
     name: "Starter Package",
     description: "Essential CRM infrastructure for getting your automation off the ground.",
@@ -13,7 +12,7 @@ const pricingPlans = [
     monthlyFee: "$150",
     features: ["CRM sub-account set up", "Basic pipeline setup", "1–2 automated workflows", "Email & SMS templates", "Lead management dashboard", "Basic system integrations", "Monthly system maintenance"],
     highlight: false,
-    aiFeatures: []
+    aiFeatures: [],
   },
   {
     name: "Growth Package",
@@ -23,7 +22,7 @@ const pricingPlans = [
     features: ["CRM sub-account setup", "3–5 workflows and automations", "Lead pipelines and tagging system", "Automated follow-ups (email/SMS)", "Dashboard reporting", "Integration with forms, calendars, etc.", "Monthly optimization & maintenance"],
     highlight: true,
     aiFeatures: ["Includes AI Property Comps"],
-    addons: ["VA support (lead qualification / pipeline updates)"]
+    addons: ["VA support (lead qualification / pipeline updates)"],
   },
   {
     name: "Automation Pro",
@@ -33,8 +32,8 @@ const pricingPlans = [
     features: ["Advanced CRM automation setup", "Multiple pipelines and workflows", "Lead nurturing campaigns", "Advanced dashboards and analytics", "Multi-channel automation (SMS, email, calls)", "System integrations (Zapier/API tools)", "Monthly automation optimization", "Priority support"],
     highlight: false,
     aiFeatures: ["Includes AI Property Comps", "Includes AI Cold Caller"],
-    addons: ["Human Cold Calling Support", "Lead Qualification Services", "Marketing funnel setup"]
-  }
+    addons: ["Human Cold Calling Support", "Lead Qualification Services", "Marketing funnel setup"],
+  },
 ];
 
 export default function PayAsYouGo() {
@@ -50,21 +49,21 @@ export default function PayAsYouGo() {
     <>
       <main className="min-h-screen bg-brand-gray/10 py-20 lg:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h1 className="text-4xl font-black uppercase tracking-tighter text-brand-blue sm:text-6xl">
               Pay As You <span className="text-brand-red italic">Grow</span>
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-              No bloated agency retainers. You pay a one-time build fee for the infrastructure, 
-              and a flat monthly rate for maintenance, hosting, and optimization. 
+              No bloated agency retainers. You pay a one-time build fee for the infrastructure,
+              and a flat monthly rate for maintenance, hosting, and optimization.
             </p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3 items-start">
             {pricingPlans.map((plan, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className={`relative flex flex-col rounded-[2.5rem] bg-white p-8 shadow-xl transition-transform hover:-translate-y-2 ${
                   plan.highlight ? "border-4 border-brand-red scale-105 z-10" : "border border-brand-blue/10 mt-4 lg:mt-8"
                 }`}
@@ -85,12 +84,9 @@ export default function PayAsYouGo() {
                     <span className="text-5xl font-black text-brand-blue">{plan.monthlyFee}</span>
                     <span className="text-sm font-bold text-slate-400">/ month</span>
                   </div>
-                  <div className="text-sm font-bold text-brand-red">
-                    + {plan.setupFee} One-Time Setup Fee
-                  </div>
+                  <div className="text-sm font-bold text-brand-red">+ {plan.setupFee} One-Time Setup Fee</div>
                 </div>
 
-                {/* AI Features Highlight (If any) */}
                 {plan.aiFeatures && plan.aiFeatures.length > 0 && (
                   <div className="mb-6 rounded-xl bg-brand-blue p-4 text-white">
                     <span className="text-xs font-black uppercase tracking-widest text-brand-gray/60 mb-2 block">AI Powered Integration</span>
@@ -104,7 +100,6 @@ export default function PayAsYouGo() {
                   </div>
                 )}
 
-                {/* Core Features */}
                 <ul className="mb-8 flex-grow space-y-4">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm text-slate-600">
@@ -116,10 +111,9 @@ export default function PayAsYouGo() {
                   ))}
                 </ul>
 
-                {/* Call to Action - Changed from Link to Button onClick */}
                 <div className="mt-auto block">
-                  <Button 
-                    variant={plan.highlight ? "primary" : "outline"} 
+                  <Button
+                    variant={plan.highlight ? "primary" : "outline"}
                     className="w-full"
                     onClick={() => handleSelectPlan(plan.name)}
                   >
@@ -132,10 +126,9 @@ export default function PayAsYouGo() {
         </div>
       </main>
 
-      {/* Render the Modal here too */}
-      <ConsultationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         selectedPlan={selectedPlan}
       />
     </>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import ConsultationModal from "@/components/ConsultationModal";
+import Testimonials from "@/components/Testimonials";
+import Companies from "@/components/Companies";
 
 export default function Home() {
   // 1. Define state at the top of the function
@@ -16,6 +18,8 @@ export default function Home() {
         {/* Pass the function to trigger the modal */}
         <Hero onLaunchClick={() => setIsModalOpen(true)} />
         <Features />
+        <Testimonials />
+        <Companies />
       </main>
 
       {/* 3. Place the Modal outside the main tag so it layers on top */}
