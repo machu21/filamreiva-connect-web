@@ -1,6 +1,14 @@
-import { Shield, Lock, Eye, Trash2, Globe, AlertTriangle, Baby, Mail } from "lucide-react";
+import { Shield, Lock, Eye, Trash2, Globe, AlertTriangle, Baby, Mail, MapPin, Scale, ShieldAlert, Bell } from "lucide-react";
 
 const sections = [
+  {
+    Icon: MapPin,
+    id: "geographic-scope",
+    title: "Geographic Scope of Services",
+    content: [
+      { subtitle: null, body: "The Services provided by FAR Agents by Filamreiva LLC are intended solely for use by individuals and businesses located within the United States. We do not knowingly collect Personal Data from individuals located in the European Union, European Economic Area, or United Kingdom. If you are accessing our Services from outside the United States, you do so at your own risk and acknowledge that your data will be processed and stored in the United States under US law." },
+    ],
+  },
   {
     Icon: Eye,
     id: "data-collected",
@@ -57,6 +65,21 @@ const sections = [
     title: "Security of Your Personal Data",
     content: [
       { subtitle: null, body: "We implement commercially acceptable safeguards to protect Your data. However, no method of transmission over the Internet or electronic storage is 100% secure. We strive to protect Your Personal Data but cannot guarantee absolute security." },
+      { subtitle: "Data Breach Notification", body: "In the event of a security breach that compromises your Personal Data, FAR Agents by Filamreiva LLC will take prompt action in accordance with applicable law, including the Wyoming Data Breach Notification Act (Wyo. Stat. § 40-12-501 et seq.)." },
+      { subtitle: "In the event of a breach, we will:", list: [
+        "Investigate and contain the breach as quickly as reasonably practicable upon discovery.",
+        "Notify affected individuals within 30 days of confirming a breach, unless law enforcement requests a delay.",
+        "Notify the Wyoming Attorney General if the breach affects 500 or more Wyoming residents.",
+        "Provide notification via written letter, email, or substitute notice depending on the number of affected individuals.",
+      ]},
+      { subtitle: "Notification will include at minimum:", list: [
+        "A description of what happened",
+        "The types of Personal Data involved",
+        "Steps we are taking to investigate and mitigate the breach",
+        "Steps you can take to protect yourself",
+        "Contact information for follow-up questions",
+      ]},
+      { subtitle: null, body: "If you believe your data may have been compromised, please contact us immediately at support@filamreiva.com." },
     ],
   },
   {
@@ -67,12 +90,31 @@ const sections = [
       { subtitle: null, body: "Our Service is not directed to users under 13 years of age. We do not knowingly collect Personal Data from children under 13. If you become aware that a child has provided us with Personal Data, please contact us immediately so we can take steps to remove that information." },
     ],
   },
+  {
+    Icon: Scale,
+    id: "ccpa",
+    title: "Your Privacy Rights Under California Law (CCPA/CPRA)",
+    content: [
+      { subtitle: null, body: "If you are a California resident, you have specific rights regarding your Personal Data under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA). This section describes those rights and how to exercise them." },
+      { subtitle: "Your California Privacy Rights:", list: [
+        "Right to Know — You have the right to request disclosure of what Personal Data we have collected, including categories, sources, business purposes, and third parties it has been shared with.",
+        "Right to Delete — You have the right to request deletion of Personal Data we have collected from you, subject to certain exceptions required by law.",
+        "Right to Correct — You have the right to request that we correct inaccurate Personal Data we maintain about you.",
+        "Right to Opt Out — You have the right to opt out of the sale or sharing of your Personal Data for cross-context behavioral advertising. We do not sell your Personal Data.",
+        "Right to Limit Use of Sensitive Personal Information — You have the right to limit our use and disclosure of sensitive Personal Data to only what is necessary to perform the Services.",
+        "Right to Non-Discrimination — We will not discriminate against you for exercising any of your CCPA/CPRA rights.",
+      ]},
+      { subtitle: "How to Submit a Request", body: "To exercise any of the rights listed above, contact us at support@filamreiva.com or via filamreiva.com. We will acknowledge your request within 10 business days and fulfill it within 45 calendar days of receipt. If we require additional time, we will notify you of the extension and reason. We may need to verify your identity before processing your request." },
+      { subtitle: "Authorized Agents", body: "You may designate an authorized agent to submit a CCPA request on your behalf. We may require written proof of the agent's authorization and may verify your identity directly before processing the request." },
+      { subtitle: "Data Retention", body: "We retain your Personal Data only as long as necessary to fulfill the purposes described in this Privacy Policy or as required by applicable law. When your data is no longer needed, it will be securely deleted or anonymized." },
+    ],
+  },
 ];
 
 const definitions = [
   { term: "Account", def: "A unique account created for You to access our Service." },
   { term: "Affiliate", def: "Any entity that controls, is controlled by, or is under common control with a party. 'Control' means owning 50% or more of shares, equity interest, or voting securities." },
-  { term: "Company", def: "Refers to FAR Agents by FILAMREIVA LLC, Wyoming." },
+  { term: "Company", def: "Refers to FAR Agents by FILAMREIVA LLC." },
   { term: "Cookies", def: "Small files placed on Your device by a website, used for remembering your preferences and tracking usage." },
   { term: "Country", def: "Refers to the United States." },
   { term: "Device", def: "Any device capable of accessing the Service (e.g., smartphone, computer, tablet)." },
@@ -108,7 +150,7 @@ export default function PrivacyPolicy() {
               <p className="text-white/70 font-bold">
                 {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
               </p>
-              <p className="text-white/40 text-sm mt-2">FAR Agents by FILAMREIVA LLC · Wyoming</p>
+              <p className="text-white/40 text-sm mt-2">FAR Agents by FILAMREIVA LLC</p>
             </div>
           </div>
         </div>
@@ -186,10 +228,20 @@ export default function PrivacyPolicy() {
                     <h2 className="text-2xl font-black text-brand-blue uppercase tracking-tighter">{title}</h2>
                   </div>
                   <div className="space-y-5 pl-[60px]">
-                    {content.map(({ subtitle, body }: any, j: number) => (
+                    {content.map(({ subtitle, body, list }: any, j: number) => (
                       <div key={j}>
                         {subtitle && <p className="text-sm font-black text-brand-blue mb-2">{subtitle}</p>}
                         {body && <p className="text-slate-500 text-sm leading-relaxed">{body}</p>}
+                        {list && (
+                          <ul className="space-y-2.5 mt-2">
+                            {list.map((item: string, k: number) => (
+                              <li key={k} className="flex items-start gap-3 text-sm text-slate-500">
+                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -212,7 +264,7 @@ export default function PrivacyPolicy() {
               <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">Contact Us About This Policy</h3>
               <p className="text-white/60 text-sm">
                 Reach out at{" "}
-                <a href="mailto:support@filamreiva.com" className="text-brand-red font-bold hover:underline">support@filamreivas.com</a>
+                <a href="mailto:support@filamreiva.com" className="text-brand-red font-bold hover:underline">support@filamreiva.com</a>
               </p>
             </div>
           </div>
