@@ -46,8 +46,8 @@ export default function Footer() {
             <h3 className="text-sm font-bold tracking-wider text-brand-red uppercase">Company</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="/about" className="hover:text-white transition">About FAR Agents</a></li>
-              <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+              <li><a href="/terms-and-condition" className="hover:text-white transition">Terms & Conditions</a></li>
+              <li><a href="/privacy-policy" className="hover:text-white transition">Privacy Policy</a></li>
               <li><a href="/contact" className="hover:text-white transition">Contact Support</a></li>
             </ul>
           </div>
