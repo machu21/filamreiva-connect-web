@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="flex flex-1 justify-start">
           <Link href="/" className="flex items-center hover:opacity-90 transition">
             <Image
-              src="/images/logo.png"
+              src="/images/LOGO-DEMO.png"
               alt="Filamreiva Connect Logo"
               width={220}
               height={70}
