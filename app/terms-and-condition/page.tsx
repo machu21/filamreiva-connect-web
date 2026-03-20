@@ -108,7 +108,7 @@ export default function TermsAndConditions() {
               <p className="text-white/70 font-bold">
                 {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
               </p>
-              <p className="text-white/40 text-sm mt-2">FAR Agents by FILAMREIVA LLC · Wyoming</p>
+              <p className="text-white/40 text-sm mt-2">FAR Agents by FILAMREIVA LLC</p>
             </div>
           </div>
         </div>
