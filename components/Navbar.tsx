@@ -41,9 +41,11 @@ export default function Navbar() {
 
         {/* Action Button - Increased to size="lg" */}
         <div className="flex flex-1 justify-end items-center gap-4">
-          <Button variant="primary" size="lg" className="text-base font-black px-8">
-            Get Started
-          </Button>
+          <Link href="https://app.faragents.com/">
+            <Button variant="primary" size="lg" className="text-base font-black px-8">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
