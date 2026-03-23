@@ -12,7 +12,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center hover:opacity-90 transition">
             <Image
               src="/images/LOGO-DEMO.png"
-              alt="Filamreiva Connect Logo"
+              alt="Filamreiva Agents Logo"
               width={220}
               height={70}
               className="h-14 w-auto object-contain object-left"

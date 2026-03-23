@@ -418,7 +418,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedPlan }: Mod
                 )}
                 <div className="flex justify-between text-xs">
                   <span className="text-slate-400 font-bold uppercase tracking-wide">With</span>
-                  <span className="text-brand-blue font-black">Filamreiva Connect</span>
+                  <span className="text-brand-blue font-black">Filamreiva Agents</span>
                 </div>
               </div>
               <Button variant="primary" className="mt-8 px-10" onClick={onClose}>

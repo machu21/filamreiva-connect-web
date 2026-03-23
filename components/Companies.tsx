@@ -1,18 +1,16 @@
 "use client";
 
+import Image from "next/image";
+
 const companies = [
-  { initials: "PH", name: "PropHome Realty" },
-  { initials: "BG", name: "BluGate Investments" },
-  { initials: "NX", name: "Nexus Property Group" },
-  { initials: "SV", name: "SilverVault RE" },
-  { initials: "KL", name: "KeyLock Capital" },
-  { initials: "TR", name: "TrueRoots Brokerage" },
-  { initials: "AC", name: "Apex Closers" },
-  { initials: "MW", name: "Midwest Wholesale Co." },
-  { initials: "DX", name: "DealX Partners" },
-  { initials: "FR", name: "First Run Realty" },
-  { initials: "CB", name: "CloseBridge Group" },
-  { initials: "VR", name: "Vantage RE Solutions" },
+  { name: "Lennar", logo: "https://www.google.com/s2/favicons?domain=lennar.com&sz=128" },
+  { name: "D.R. Horton", logo: "https://www.google.com/s2/favicons?domain=drhorton.com&sz=128" },
+  { name: "PulteGroup", logo: "https://www.google.com/s2/favicons?domain=pultegroup.com&sz=128" },
+  { name: "Toll Brothers", logo: "https://www.google.com/s2/favicons?domain=tollbrothers.com&sz=128" },
+  { name: "KB Home", logo: "https://www.google.com/s2/favicons?domain=kbhome.com&sz=128" },
+  { name: "Taylor Morrison", logo: "https://www.google.com/s2/favicons?domain=taylormorrison.com&sz=128" },
+  { name: "Meritage Homes", logo: "https://www.google.com/s2/favicons?domain=meritagehomes.com&sz=128" },
+  { name: "Century Communities", logo: "https://www.google.com/s2/favicons?domain=centurycommunities.com&sz=128" },
 ];
 
 // Duplicate for seamless infinite loop
@@ -20,31 +18,42 @@ const track = [...companies, ...companies];
 
 export default function Companies() {
   return (
-    <section className="bg-brand-gray/5 border-y border-brand-gray/20 py-12 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 mb-8 text-center">
+    <section className="bg-brand-gray/5 py-16 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 mb-10 text-center">
         <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
-          Trusted by Real Estate Teams Across the US
+          Trusted by Top Real Estate Teams Across the US
         </p>
       </div>
 
       {/* Ticker wrapper */}
-      <div className="relative">
-        {/* Left fade */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#f8f9fa] to-transparent" />
-        {/* Right fade */}
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#f8f9fa] to-transparent" />
-
-        <div className="flex gap-5 animate-ticker" style={{ width: "max-content" }}>
+      <div className="relative mx-auto max-w-[100vw] sm:max-w-7xl">
+        
+        <div 
+          className="flex gap-6 animate-ticker will-change-transform hover:[animation-play-state:paused] py-4" 
+          style={{ 
+            width: "max-content",
+            // CSS Mask creates a perfect fade without needing to match background colors
+            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)"
+          }}
+        >
           {track.map((company, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 rounded-2xl bg-white border border-brand-blue/8 px-5 py-3.5 shadow-sm shrink-0"
+              className="group flex cursor-pointer items-center gap-4 rounded-full bg-white/60 backdrop-blur-sm border border-slate-200/60 px-6 py-3 shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-0.5 transition-all duration-300 shrink-0"
             >
-              {/* Initial badge */}
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-blue text-white text-xs font-black">
-                {company.initials}
+              {/* Logo container with greyscale to color transition */}
+              <div className="relative h-7 w-7 shrink-0 grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110">
+                <Image
+                  src={company.logo}
+                  alt={`${company.name} logo`}
+                  fill
+                  sizes="28px"
+                  className="object-contain"
+                />
               </div>
-              <span className="text-sm font-bold text-brand-blue whitespace-nowrap">
+              
+              <span className="text-sm font-semibold text-slate-500 group-hover:text-brand-blue transition-colors duration-300 whitespace-nowrap">
                 {company.name}
               </span>
             </div>
@@ -54,14 +63,12 @@ export default function Companies() {
 
       <style jsx>{`
         @keyframes ticker {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          /* Using translate3d forces hardware acceleration for buttery smooth scrolling */
+          0%   { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-ticker {
           animation: ticker 30s linear infinite;
-        }
-        .animate-ticker:hover {
-          animation-play-state: paused;
         }
       `}</style>
     </section>

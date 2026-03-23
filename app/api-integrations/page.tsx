@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import ConsultationModal from "@/components/ConsultationModal";
@@ -14,10 +15,22 @@ const features = [
   { Icon: ShieldCheck, title: "Error Handling & Logs", desc: "Every integration includes fallback logic, error alerts, and audit logs so nothing breaks silently." },
 ];
 
+// Using Brandfetch CDN + Clearbit for reliable logo delivery
 const integrations = [
-  "GoHighLevel", "N8N", "Zapier", "Make (Integromat)", "Google Sheets",
-  "Slack", "Twilio", "OpenAI", "Calendly", "Facebook Ads",
-  "Google Ads", "HubSpot", "Podio", "Airtable", "REsimpli",
+  { name: "N8N", logo: "https://www.google.com/s2/favicons?domain=n8n.io&sz=128" },
+  { name: "Zapier", logo: "https://www.google.com/s2/favicons?domain=zapier.com&sz=128" },
+  { name: "Make", logo: "https://www.google.com/s2/favicons?domain=make.com&sz=128" },
+  { name: "Google Sheets", logo: "https://www.google.com/s2/favicons?domain=google.com&sz=128" },
+  { name: "Slack", logo: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
+  { name: "Twilio", logo: "https://www.google.com/s2/favicons?domain=twilio.com&sz=128" },
+  { name: "OpenAI", logo: "https://www.google.com/s2/favicons?domain=openai.com&sz=128" },
+  { name: "Calendly", logo: "https://www.google.com/s2/favicons?domain=calendly.com&sz=128" },
+  { name: "Facebook Ads", logo: "https://www.google.com/s2/favicons?domain=facebook.com&sz=128" },
+  { name: "Google Ads", logo: "https://www.google.com/s2/favicons?domain=google.com&sz=128" },
+  { name: "HubSpot", logo: "https://www.google.com/s2/favicons?domain=hubspot.com&sz=128" },
+  { name: "Podio", logo: "https://www.google.com/s2/favicons?domain=podio.com&sz=128" },
+  { name: "Airtable", logo: "https://www.google.com/s2/favicons?domain=airtable.com&sz=128" },
+  { name: "REsimpli", logo: "https://www.google.com/s2/favicons?domain=resimpli.com&sz=128" },
 ];
 
 const process = [
@@ -62,15 +75,30 @@ export default function APIIntegrations() {
           </div>
         </section>
 
-        {/* ── INTEGRATIONS TICKER ── */}
-        <section className="bg-brand-gray/5 border-y border-brand-gray/20 py-8 overflow-hidden">
+        {/* ── INTEGRATIONS GRID ── */}
+        <section className="bg-brand-gray/5 border-y border-brand-gray/20 py-12">
           <div className="mx-auto max-w-7xl px-6">
-            <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Tools We Connect</p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Tools We Connect</p>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-4">
               {integrations.map((tool, i) => (
-                <span key={i} className="px-4 py-1.5 rounded-full bg-white border border-brand-blue/10 text-xs font-bold text-brand-blue shadow-sm">
-                  {tool}
-                </span>
+                <div
+                  key={i}
+                  className="group flex flex-col items-center gap-3 rounded-2xl bg-white border border-brand-blue/8 px-4 py-5 shadow-sm hover:shadow-md hover:border-brand-blue/20 hover:-translate-y-0.5 transition-all"
+                >
+                  <div className="h-10 w-10 flex items-center justify-center relative">
+                    {/* Swapped to Next.js Image Component */}
+                    <Image
+                      src={tool.logo}
+                      alt={tool.name}
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-slate-500 text-center leading-tight group-hover:text-brand-blue transition-colors">
+                    {tool.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>

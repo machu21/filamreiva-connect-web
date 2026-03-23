@@ -13,7 +13,7 @@ export default function Hero({ onLaunchClick }: { onLaunchClick: () => void }) {
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
           Your business doesn’t need another freelancer. It needs a backbone.
-          Filamreiva Connect designs, implements, and manages CRM infrastructure
+          FilamReiva Agents designs, implements, and manages CRM infrastructure
           that actually works—so founders spend their time scaling, not fixing broken automations.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
