@@ -66,35 +66,6 @@ const trustItems = [
   { Icon: ShieldCheck, text: "Full A2P/SMS compliance for real estate outreach" },
 ];
 
-function VideoModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div className='fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm' onClick={onClose}>
-      <div className='relative w-full max-w-4xl' onClick={e => e.stopPropagation()}>
-        <button
-          onClick={onClose}
-          className='absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-bold uppercase tracking-widest flex items-center gap-2 transition'
-        >
-          <X size={16} /> Close
-        </button>
-        <div className='rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video'>
-          <video
-            src='/videos/demo.mp4'
-            controls
-            autoPlay
-            className='w-full h-full object-cover'
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function GetATeam() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -122,12 +93,6 @@ export default function GetATeam() {
               <Button size="lg" variant="primary" className="px-10" onClick={() => setIsModalOpen(true)}>
                 Book Discovery Call
               </Button>
-              <button
-                onClick={() => setIsVideoOpen(true)}
-                className="text-sm font-bold text-white/60 hover:text-white transition underline underline-offset-4 flex items-center gap-1"
-              >
-                ▶ See how it works
-              </button>
             </div>
           </div>
         </section>
@@ -321,7 +286,6 @@ export default function GetATeam() {
       </main>
 
       <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </>
   );
 }

@@ -69,6 +69,7 @@ export async function POST(req: NextRequest) {
     if (err.name === "AbortError") {
       console.error("[BOOKING] Apps Script timed out");
       return NextResponse.json(
+
         
         { error: "Request timed out. Please try again." },
         { status: 504 }
