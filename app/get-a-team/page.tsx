@@ -69,7 +69,7 @@ const trustItems = [
 
 export default function GetATeam() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
 
   return (
     <>
@@ -185,7 +185,7 @@ export default function GetATeam() {
                     }`}
                   >
                     Hire Now
-                  </button>
+                  </button>+
                 </div>
               ))}
             </div>

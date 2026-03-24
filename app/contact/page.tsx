@@ -3,19 +3,19 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import ConsultationModal from "@/components/ConsultationModal";
-import { Mail, MapPin, Clock, ArrowRight, Phone } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, Phone, Loader2, CheckCircle2 } from "lucide-react";
 
 const contactDetails = [
   {
     Icon: Mail,
     label: "Email Us",
-    value: "hello@filamreivaconnect.com",
+    value: "support@filamreiva.com",
     sub: "We reply within 24 hours",
   },
   {
     Icon: MapPin,
     label: "Headquarters",
-    value: "Global Operations HQ",
+    value: "Manila, Philippines",
     sub: "Remote-first, worldwide reach",
   },
   {
@@ -27,13 +27,52 @@ const contactDetails = [
     {
     Icon: Phone,
     label: "Phone",
-    value: "+1 (800) 123-4567",
+    value: "+1 307 461 3527",
     sub: "Available 24/7 for urgent matters",
   },
 ];
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    crm: "",
+    message: "",
+    botTrap: "", // Added the honeypot to state here
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed to submit form");
+      setSuccess(true);
+      // Reset form including botTrap
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", crm: "", message: "", botTrap: "" });
+    } catch (err: any) {
+      setError(err.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -130,13 +169,17 @@ export default function Contact() {
                 </div>
 
                 {/* Form body */}
-                <form className="space-y-5 p-10" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-5 p-10" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-slate-500">
                         First Name
                       </label>
                       <input
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
                         type="text"
                         className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                         placeholder="Pat"
@@ -147,6 +190,10 @@ export default function Contact() {
                         Last Name
                       </label>
                       <input
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
                         type="text"
                         className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                         placeholder="Doe"
@@ -159,6 +206,10 @@ export default function Contact() {
                       Work Email
                     </label>
                     <input
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                       type="email"
                       className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                       placeholder="pat@company.com"
@@ -170,6 +221,9 @@ export default function Contact() {
                       Phone Number <span className="text-slate-300 normal-case font-normal">(optional)</span>
                     </label>
                     <input
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       type="tel"
                       className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                       placeholder="+1 (555) 000-0000"
@@ -181,6 +235,9 @@ export default function Contact() {
                       Current CRM / Stack
                     </label>
                     <input
+                      name="crm"
+                      value={formData.crm}
+                      onChange={handleChange}
                       type="text"
                       className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                       placeholder="e.g., GoHighLevel, HubSpot, N8N"
@@ -192,8 +249,38 @@ export default function Contact() {
                       How can we help?
                     </label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 h-32 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400 resize-none"
                       placeholder="Briefly describe your bottlenecks or goals..."
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="text-xs text-brand-red font-bold bg-brand-red/5 border border-brand-red/20 rounded-xl px-4 py-3">
+                      ⚠️ {error}
+                    </p>
+                  )}
+                  
+                  {success && (
+                    <p className="text-xs text-green-600 font-bold bg-green-50 border border-green-200 rounded-xl px-4 py-3 flex items-center gap-2">
+                      <CheckCircle2 size={16} /> Message sent successfully! We'll be in touch soon.
+                    </p>
+                  )}
+
+                  {/* ── HONEYPOT FIELD (Hidden from users) ── */}
+                  <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+                    <label htmlFor="botTrap">Do not fill this out</label>
+                    <input
+                      type="text"
+                      name="botTrap"
+                      id="botTrap"
+                      value={formData.botTrap}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
                     />
                   </div>
 
@@ -201,9 +288,11 @@ export default function Contact() {
                   <div className="pt-1">
                     <Button
                       variant="primary"
+                      type="submit"
+                      disabled={loading}
                       className="w-full font-black uppercase tracking-widest flex items-center justify-center gap-2 py-4"
                     >
-                      Submit Inquiry <ArrowRight size={16} />
+                      {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>Submit Inquiry <ArrowRight size={16} /></>}
                     </Button>
                     <p className="text-center text-xs text-slate-400 mt-3">
                       No spam. No pressure. Just a conversation.
