@@ -44,7 +44,7 @@ const handleSend = async () => {
     const userText = inputValue;
     const newMessage = { id: Date.now(), role: "user" as const, text: userText };
     
-    // 🚨 NEW: Frontend Email Detection
+    //NEW: Frontend Email Detection
     const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
     const containsEmail = emailRegex.test(userText);
 
@@ -96,7 +96,7 @@ const handleSend = async () => {
               <div>
                 <h3 className="text-sm font-black uppercase tracking-widest">FAR AI</h3>
                 <p className="text-[10px] text-brand-gray/80">
-                  {isChatEnded ? "Session Closed" : "Powered by Gemini Logic"}
+                  {isChatEnded ? "Session Closed" : "Powered by FAR Agents AI"}
                 </p>
               </div>
             </div>
