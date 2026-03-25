@@ -15,7 +15,7 @@ const contactDetails = [
   {
     Icon: MapPin,
     label: "Headquarters",
-    value: "Manila, Philippines",
+    value: "Wyoming, USA",
     sub: "Remote-first, worldwide reach",
   },
   {
@@ -23,12 +23,6 @@ const contactDetails = [
     label: "Business Hours",
     value: "Mon – Fri, 11AM – 7PM",
     sub: "Eastern Standard Time (EST)",
-  },
-    {
-    Icon: Phone,
-    label: "Phone",
-    value: "+1 307 461 3527",
-    sub: "Available 24/7 for urgent matters",
   },
 ];
 
@@ -125,7 +119,7 @@ export default function Contact() {
                         {label}
                       </p>
                       <p className="font-black text-brand-blue text-sm">{value}</p>
-                      <p className="text-xs text-slate-400 mt-0.5">{sub}</p>
+                      
                     </div>
                   </div>
                 ))}

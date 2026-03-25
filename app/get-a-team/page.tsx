@@ -13,7 +13,7 @@ const teamRoles = [
   { title: "CRM Experts", Icon: Settings2, tagline: "Your backend, bulletproofed.", items: ["Complete Marketing & Automation Solutions", "Custom Membership Solutions", "Streamlined Automations & Integrations", "AI Bot Creation & Custom App Development"] },
   { title: "Media Buyer", Icon: Target, tagline: "Ads that actually close deals.", items: ["Facebook Ads", "TikTok Ads", "Google Ads", "Reporting", "Testing and Retargeting"] },
   { title: "SEO Experts", Icon: Search, tagline: "Get found before the competition.", items: ["Keyword research", "Local SEO", "On-Page SEO", "Off-Page SEO", "Backlinks & Reputation"] },
-  { title: "Graphic Designer", Icon: Paintbrush2, tagline: "Visuals that build trust instantly.", items: ["FAR Connect UI/UX design", "Funnel & Website graphics", "Mobile-responsive layouts", "Brand-aligned creatives", "Fast revisions"] },
+  { title: "Graphic Designer", Icon: Paintbrush2, tagline: "Visuals that build trust instantly.", items: ["FAR Agents UI/UX design", "Funnel & Website graphics", "Mobile-responsive layouts", "Brand-aligned creatives", "Fast revisions"] },
   { title: "Content Writer", Icon: PenLine, tagline: "Words that move buyers to act.", items: ["SEO-optimized copy", "Audience-focused messaging", "Blog & Website content", "Lead-converting writing", "Keyword-rich structure"] },
   { title: "Growth Maker", Icon: TrendingUp, tagline: "More leads. Less guesswork.", items: ["Lead scraping & cleanup", "Facebook Outreach", "Linkedin Outreach", "Conversion-focused input", "Fast, reliable support"] },
   { title: "Social Media Manager", Icon: Smartphone, tagline: "Stay top of mind in every feed.", items: ["Cross-platform strategy", "Brand growth & visibility", "Content planning & posting", "Audience engagement", "Performance tracking"] },
@@ -61,7 +61,7 @@ const stats = [
 ];
 
 const trustItems = [
-  { Icon: Home, text: "FAR Connect-native team with real estate CRM experience" },
+  { Icon: Home, text: "FAR Agents-native team with real estate CRM experience" },
   { Icon: ClipboardList, text: "Pre-built workflows for buyer & seller funnels" },
   { Icon: ShieldCheck, text: "Full A2P/SMS compliance for real estate outreach" },
 ];
@@ -197,7 +197,7 @@ export default function GetATeam() {
           <h2 className="text-3xl font-black text-brand-blue uppercase tracking-tighter">Stop Hiring One at a Time</h2>
           <div className="mx-auto mt-4 h-1.5 w-20 bg-brand-red rounded-full" />
           <p className="mt-6 text-slate-500 leading-relaxed text-lg">
-            Most real estate teams waste months hiring, onboarding, and managing scattered freelancers. We give you a pre-wired team — each specialist already knows their lane, already integrated into your FAR Connect stack, and already managed by a dedicated Project Manager.
+            Most real estate teams waste months hiring, onboarding, and managing scattered freelancers. We give you a pre-wired team — each specialist already knows their lane, already integrated into your FAR Agents stack, and already managed by a dedicated Project Manager.
           </p>
         </section>
 
