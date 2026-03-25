@@ -308,14 +308,11 @@ export default function Contact() {
                   You're in Good Hands
                 </p>
                 <p className="text-lg font-black text-brand-blue uppercase tracking-tight">
-                  180+ Real Estate Teams Trust Filamreiva Connect
+                  180+ Real Estate Teams Trust Filamreiva Agents
                 </p>
               </div>
               <div className="flex flex-wrap justify-center md:justify-end gap-8 text-sm text-slate-500 font-medium">
-                <span className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-brand-red inline-block" />
-                  GHL-Certified Build Team
-                </span>
+
                 <span className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-brand-red inline-block" />
                   A2P/SMS Compliant
