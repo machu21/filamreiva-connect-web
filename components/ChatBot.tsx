@@ -12,8 +12,13 @@ type Message = {
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, role: "bot", text: "Systems online. 🚀 I'm the FAR AGENTS AI. Ask me about our CRM builds, pricing, or automation features." }
+    {
+      id: 1,
+      role: "bot",
+      text: "Hi there! I’m your FAR AGENTS AI assistant—ask me anything about our CRM setups, pricing, or automations."
+    }
   ]);
+  
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   
