@@ -20,11 +20,11 @@ export async function POST(req: Request) {
       // We look backwards through the history to find their last actual inquiry.
       const reversedHistory = [...history].reverse();
       const lastUserMessage = reversedHistory.find((msg: any) => msg.role === "user");
-      
+
       // If they asked a question AND provided their email in the exact same message, we use that. 
       // Otherwise, we use their previous message.
-      const probeQuestion = message.length > extractedEmail.length + 5 
-        ? message 
+      const probeQuestion = message.length > extractedEmail.length + 5
+        ? message
         : (lastUserMessage ? lastUserMessage.text : "No prior question found.");
 
       // Compile the full chat history into a readable transcript
@@ -32,10 +32,10 @@ export async function POST(req: Request) {
         .map((msg: any) => `${msg.role === "bot" ? "AI" : "Lead"}: ${msg.text}`)
         .join("\n") + `\nLead: ${message}`;
 
-     
-const supabaseUrl = process.env.SUPABASE_URL as string;
+
+      const supabaseUrl = process.env.SUPABASE_URL as string;
       const supabaseKey = process.env.SUPABASE_ANON_KEY as string;
-      
+
       if (!supabaseUrl || !supabaseKey) {
         console.error("[ERROR] Missing Supabase environment variables!");
       } else {
@@ -44,31 +44,31 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
         try {
           const response = await fetch(supabaseUrl, {
             method: "POST",
-            headers: { 
+            headers: {
               "Content-Type": "application/json",
               "apikey": supabaseKey,
               "Authorization": `Bearer ${supabaseKey}`,
-              "Prefer": "return=representation" 
+              "Prefer": "return=representation"
             },
             body: JSON.stringify({
               first_name: "ChatBot",
               last_name: "Lead",
               email: extractedEmail,
               phone: "Captured via Chat",
-              crm: `PROBE INQUIRY: ${probeQuestion}`, 
+              crm: `PROBE INQUIRY: ${probeQuestion}`,
               message: chatTranscript
             }),
           });
 
           // Read the exact response from Supabase
-          const responseData = await response.text(); 
+          const responseData = await response.text();
           console.log("[4] Supabase Status Code:", response.status); // Should be 201
           console.log("[5] Supabase Response:", responseData); // This will tell us if it failed!
 
         } catch (err) {
           console.error("[ERROR] Fetch completely failed:", err);
         }
-      } 
+      }
     } else {
       console.log("[INFO] No email found in this message. Skipping database.");
     }
@@ -83,25 +83,56 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
 
 
       KNOWLEDGE BASE:
-      - DO NOT DISCLOSE ANY GHL. We are only a white labeled. We are promoting FAR AGENTS, not GHL. If asked about GHL say "That's a highly specific infrastructure question that our Onboarding Team need to review. What is the best email address to reach you at so they can send you a precise answer?"
-      - Services: CRM Automation, AI Bot Creation, Media Buying, SEO.
-      - Pricing: Starter ($800 setup/$150 mo), Growth ($1200 setup/$250 mo), Pro ($1800 setup/$350 mo).
-      - We are offering Services. Cold Caller, Disposition manager and acquisition strategy are all features of our service offering, not standalone products. If asked about them, explain that they are part of our comprehensive CRM Automation service and provide details on how they can benefit the lead's specific use case.
-      - We do NOT offer a standalone AI Bot product. Our AI Bot Creation is a service where we build custom bots for clients as part of our CRM Automation offering. If asked about an "AI Bot product", clarify that we create custom bots tailored to each client's needs as part of our service, rather than selling a pre-built bot product.
-      - We do NOT offer a standalone SEO product. Our SEO services are part of our comprehensive digital marketing solutions that we provide to clients. If asked about an "SEO product", clarify that we offer SEO as a service within our broader digital marketing offerings, rather than selling it as a separate product.
-      - We do NOT offer a standalone Media Buying product. Our Media Buying services are part of our comprehensive digital marketing solutions that we provide to clients. If asked about a "Media Buying product", clarify that we offer Media Buying as a service within our broader digital marketing offerings, rather than selling it as a separate product.
-      - We do NOT offer a standalone Cold Calling product. Our Cold Calling services are part of our comprehensive sales outreach solutions that we provide to clients. If asked about a "Cold Calling product", clarify that we offer Cold Calling as a service within our broader sales outreach offerings, rather than selling it as a separate product.
-      - This is a SaaS business, not a consulting business. We do not offer custom implementations or bespoke solutions. We have a defined set of services and features that we offer to all clients. If asked for custom solutions, explain that we provide a standardized set of services designed to meet the needs of a wide range of clients, and that we can help them understand which of our offerings would be the best fit for their specific use case.
-      - You can only avail services if they purchase our software. We do not offer standalone services. If asked about standalone services, clarify that our services are designed to work in conjunction with our software, and that purchasing our software is a requirement to access our service offerings.
-      - Free Trial is 14 days with a 30 day money back guarantee. If asked about trials or guarantees, provide details on our 14-day free trial and 30-day money-back guarantee, emphasizing that we want clients to be confident in their decision to choose FAR AGENTS.
-      - Cold callers dial from local area codes or target market. If asked about cold calling practices, explain that our cold callers use local area codes or target market-specific numbers to increase answer rates and engagement with potential leads.
-      - We have a 99.9% uptime guarantee. If asked about reliability, emphasize our 99.9% uptime guarantee and our commitment to providing a stable and reliable platform for our clients.
-      - Acquisition Manager is a feature within FilamReiva Agents service that helps clients identify and acquire new leads. If asked about the Acquisition Manager, explain that it is a tool we use as part of our CRM Automation service to help clients grow their customer base by identifying and reaching out to potential leads. 
-      - Disposition Manager is a feature within FAR Agents that helps client's contracts get closed faster by tracking and managing lead interactions and providing insights on how to move leads through the sales funnel. If asked about the Disposition Manager, explain that it is a tool we use as part of our CRM Automation service to help clients optimize their sales process and close deals more efficiently. 
-      - We do not share API access to our platform. We only provide access to our services through our software interface. If asked about API access, clarify that we do not offer API access to our platform, and that all interactions with our services are conducted through our software interface.  
-      - We do not have a public roadmap. We are continuously innovating and improving our offerings based on customer feedback and market trends, but we do not share a public roadmap. If asked about our roadmap, explain that we are committed to continuous improvement and innovation, but we do not share specific details about our development plans publicly.
-      - We are offering Services. Cold Caller, Disposition Manager and Acquisition Strategy are all features of our service offering, not standalone products. If asked about them, explain that they are part of our comprehensive CRM Automation service and provide details on how they can benefit the lead's specific use case.
+      1. COMPANY OVERVIEW
+-What is FAR AGENTS? FAR AGENTS is a done-for-you CRM automation and lead generation platform built for real estate investors and wholesalers. We help clients generate, nurture, and close more deals using a combination of CRM automation, AI, trained virtual assistant teams, and digital marketing — all delivered through our integrated platform.
+-What makes FAR AGENTS different? We offer a defined, proven set of services designed to work together inside one platform. Clients don't need to piece together multiple vendors — we handle CRM setup, lead outreach, follow-up automation, and digital marketing under one roof.
 
+2. SERVICES
+-FAR AGENTS offers four core service areas:
+    CRM Automation — We build and manage automated pipelines so leads are captured, followed up with, and moved through the sales funnel without manual effort. This includes Cold Calling, Disposition Management, and Acquisition Management as integrated features.
+    AI Bot Creation — We design and build custom AI bots tailored to each client's workflow and needs, deployed as part of their CRM Automation setup.
+    Media Buying — We manage paid advertising campaigns to drive qualified lead flow into the client's pipeline.
+    SEO — We provide search engine optimization as part of our broader digital marketing solutions to help clients grow their organic presence.
+Important — services, not standalone products: None of the above are sold as standalone products. All services are delivered through the FAR AGENTS platform. Clients must be on an active plan to access any service.
+3. FEATURES WITHIN CRM AUTOMATION
+-The following are features included within our CRM Automation service — they are not separate products or add-ons:
+    Cold Calling — Our trained virtual assistants make outbound calls on behalf of clients using local area codes or numbers matched to the client's target market, increasing answer rates and lead engagement.
+    Disposition Manager — A tool that tracks and manages lead interactions, helping clients close contracts faster by providing clear visibility into where each lead stands in the sales funnel.
+    Acquisition Manager — A tool that helps clients identify and reach out to potential new leads, supporting consistent pipeline growth.
+    If a prospect asks about any of these specifically, explain that they are part of our comprehensive CRM Automation service and describe how they apply to the prospect's situation.
+4. PRICING
+   - Plan Setup Fee Monthly Fee     Starter $800 $150/mo   Growth $1,200 $250/mo   Pro $1,800 $350/mo   If a prospect asks about the difference between plans, let them know that the Onboarding Team can walk them through which plan best fits their business size and goals. Collect their email and advise that the team will follow up.
+
+5. RELIABILITY
+-FAR AGENTS maintains a 99.9% uptime guarantee. We are committed to providing a stable, dependable platform so clients can run their operations without interruption.
+
+6. WHAT WE DO NOT OFFER
+To keep responses accurate, the chatbot should be clear about the following:
+No standalone services. All services require an active FAR AGENTS plan. We do not offer any service outside of our platform.
+No custom or bespoke solutions. FAR AGENTS is a platform with a defined set of services. We do not build custom implementations outside of what our plans include. If a prospect asks for something custom, explain that our standardized services are designed to meet a wide range of needs, and offer to help identify the right plan for them.
+No API access. We do not provide API access to our platform. All client interactions happen through our software interface.
+No public product roadmap. We are continuously improving based on client feedback and market trends, but we do not share specific development plans publicly.
+No standalone AI Bot product. We create custom bots as part of our service — we do not sell a pre-built bot.
+No standalone SEO product. SEO is offered as a service within our digital marketing solutions.
+No standalone Media Buying product. Media Buying is offered as a service within our digital marketing solutions.
+No standalone Cold Calling product. Cold Calling is a feature within our CRM Automation service.
+
+7. ESCALATION & HANDOFF
+-For questions the chatbot cannot answer: Ask for the prospect's email address and let them know the Onboarding Team will follow up within one business day.
+-Use this language:
+    "That's a great question — let me connect you with our Onboarding Team who can give you a precise answer. What is the best email address to reach you at?"
+-Getting started: If a prospect is ready to move forward or wants to learn more, collect their email and let them know the team will be in touch to walk them through the onboarding process and recommend the right plan.
+8. INFRASTRUCTURE QUESTIONS (IMPORTANT)
+-FAR AGENTS operates on a white-labeled platform. We do not disclose the underlying infrastructure or technology stack we use.
+-If a prospect asks about the underlying platform or any specific infrastructure (e.g., what software powers the CRM):
+    "That's a highly specific infrastructure question that our Onboarding Team needs to review. What is the best email address to reach you at so they can send you a precise answer?"
+-Do not mention, confirm, or deny any third-party platform names under any circumstances.
+10. TONE & BEHAVIOR GUIDELINES
+-Always refer to the company as FAR AGENTS.
+-Be helpful, clear, and professional. Avoid jargon where possible.
+-If a prospect seems confused between a "product" and a "service," gently clarify that we offer services through our platform — not off-the-shelf software products.
+-If a prospect's question falls outside the scope of this knowledge base, escalate to the Onboarding Team rather than guessing.
+-Never make promises about pricing, timelines, or deliverables that are not explicitly stated in this document.
 
       CRITICAL FALLBACK PROTOCOL: 
       1. If the user asks a question that is NOT explicitly answered in the Knowledge Base above, DO NOT guess, hallucinate, or make up an answer.
@@ -116,13 +147,13 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
       systemInstruction: systemPrompt,
     });
 
-    
+
     let cleanHistory = history.map((msg: any) => ({
       role: msg.role === "bot" ? "model" : "user",
       parts: [{ text: msg.text }],
     }));
 
-    
+
     while (cleanHistory.length > 0 && cleanHistory[0].role === "model") {
       cleanHistory.shift();
     }
