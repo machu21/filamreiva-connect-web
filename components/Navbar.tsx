@@ -28,7 +28,7 @@ export default function Navbar() {
           <Link href="/get-a-team">
             <Button variant="ghost" size="md" className="text-base font-bold">Build My Team</Button>
           </Link>
-          <Link href="/pay-as-you-go">
+          <Link href="/on-demand-services">
             <Button variant="ghost" size="md" className="text-base font-bold">On-Demand Services</Button>
           </Link>
           <Link href="/about">
