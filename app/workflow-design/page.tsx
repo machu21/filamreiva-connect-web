@@ -15,10 +15,11 @@ const features = [
 ];
 
 const examples = [
-  { title: "Seller Lead Nurture", desc: "New motivated seller lead → instant SMS → 3-day follow-up sequence → task assigned to acquisition manager if no reply." },
-  { title: "Buyer Follow-Up", desc: "Buyer fills out form → property info sent → automated showing reminder → post-showing feedback request." },
-  { title: "Dead Lead Revival", desc: "Leads with no activity in 30 days → re-engagement sequence → if no response, tagged for cold caller outreach." },
-  { title: "Contract to Close", desc: "Contract signed → title company notified → 7-day milestone reminders → closing day congratulations." },
+  { title: "Lead Tracking Workflow", desc: "Automatically updates pipeline stages based on applied tags for clear and organized tracking." },
+  { title: "Immediate Outreach Workflow", desc: "Triggers initial SMS and email outreach the moment a new lead is created." },
+  { title: "Long-Term Drip Workflow", desc: "Schedules and sends follow-up SMS and email campaigns over a 6–12 month period." },
+  { title: "Contract Execution Workflow", desc: "Guides users through entering property details and automatically sends the finalized contract to the lead." },
+  { title: "Inbound Intake Workflow", desc: "Captures leads from external sources such as landing pages and automatically creates and populates contact records in the system" },
 ];
 
 const process = [
@@ -89,7 +90,7 @@ export default function WorkflowDesign() {
         <section className="bg-brand-gray/5 border-y border-brand-gray/20 py-20">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center mb-14">
-              <p className="text-brand-red font-bold uppercase tracking-widest text-sm mb-2">Real Examples</p>
+              <p className="text-brand-red font-bold uppercase tracking-widest text-sm mb-2">Core Workflows</p>
               <h2 className="text-4xl font-black text-brand-blue uppercase tracking-tighter">Workflows We've<br />Built for Real Estate</h2>
               <div className="mx-auto mt-4 h-1.5 w-20 bg-brand-red rounded-full" />
             </div>

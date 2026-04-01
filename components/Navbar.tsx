@@ -2,6 +2,7 @@ import Button from "./ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-brand-blue/10 bg-white/80 backdrop-blur-md">
@@ -21,33 +22,49 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* Navigation Links */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <Link href="/">
-            <Button variant="ghost" size="md" className="text-base font-bold">Home</Button>
+            <Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">Home</Button>
           </Link>
-          <Link href="/get-a-team">
-            <Button variant="ghost" size="md" className="text-base font-bold">Build My Team</Button>
+          <Link href="/build-my-team">
+            <Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">Build My Team</Button>
           </Link>
-          <Link href="/on-demand-services">
-            <Button variant="ghost" size="md" className="text-base font-bold">On-Demand Services</Button>
+          <Link href="/pricing">
+            <Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">Pricing</Button>
           </Link>
           <Link href="/about">
-            <Button variant="ghost" size="md" className="text-base font-bold">About</Button>
+            <Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">About</Button>
           </Link>
           <Link href="/contact">
-            <Button variant="ghost" size="md" className="text-base font-bold">Contact Us</Button>
+            <Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">Contact Us</Button>
           </Link>
+
+          {/* --- EXTERNAL CRM LINK --- */}
+          <a
+            href="https://app.faragents.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2"
+          >
+<Button variant="ghost" size="md" className="text-base font-bold text-slate-600 hover:text-brand-blue transition-colors">FAR Agents CRM</Button>
+          </a>
         </div>
 
-        {/* Action Button - Increased to size="lg" */}
-        <div className="flex flex-1 justify-end items-center gap-4">
-          <Link href="https://app.faragents.com/">
-            <Button variant="primary" size="lg" className="text-base font-black px-8">
-              Get Started
+        {/* Action Button - NOW MATCHED SIZE */}
+        <div className="flex flex-1 justify-end items-center">
+          <Link href="/book-demo">
+            <Button
+              variant="primary"
+              size="md"
+              className="text-sm font-black px-6 shadow-md hover:brightness-110 active:scale-95 transition-all"
+            >
+              Book a Demo
             </Button>
           </Link>
         </div>
       </div>
     </nav>
+
   );
 }

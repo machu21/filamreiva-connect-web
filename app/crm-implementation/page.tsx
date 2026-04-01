@@ -6,7 +6,7 @@ import ConsultationModal from "@/components/ConsultationModal";
 import { CheckCircle2, Settings2, LayoutDashboard, GitBranch, Users, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 
 const features = [
-  { Icon: Settings2, title: "Sub-Account Architecture", desc: "We build scalable GHL sub-account structures designed for agencies managing multiple clients or locations." },
+  { Icon: Settings2, title: "Sub-Account Architecture", desc: "We build scalable CRM automation structures designed for agencies managing multiple leads." },
   { Icon: LayoutDashboard, title: "Custom Pipelines", desc: "Tailored sales pipelines mapped to your exact buyer and seller workflows — no generic templates." },
   { Icon: GitBranch, title: "Workflow Automation", desc: "Logic-driven automations that trigger the right action at the right time, every time." },
   { Icon: Users, title: "Team & Role Setup", desc: "User permissions, team structures, and role-based access configured from day one." },
@@ -40,7 +40,7 @@ export default function CRMImplementation() {
                 CRM<br /><span className="text-brand-red italic">Implementation</span>
               </h1>
               <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl">
-                A CRM that actually works for your business — not against it. We design, build, and deploy GoHighLevel infrastructures built for real estate operators who are done patching broken systems.
+                A CRM that actually works for your business — not against it. We design, build, and deploy High end CRM infrastructures built for real estate operators who are done patching broken systems.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button size="lg" variant="primary" className="px-10" onClick={() => setIsModalOpen(true)}>
@@ -111,7 +111,7 @@ export default function CRMImplementation() {
                 </h2>
                 <div className="h-1.5 w-20 bg-brand-red rounded-full mb-8" />
                 <ul className="space-y-4">
-                  {["GHL sub-account architecture", "Custom buyer & seller pipelines", "Automated follow-up sequences", "A2P/SMS compliance setup", "Calendar & booking integrations", "Snapshot & version control", "Full team training & documentation", "30-day post-launch support"].map((item, i) => (
+                  {["Custom buyer & seller pipelines", "Automated follow-up sequences", "A2P/SMS compliance setup", "Calendar & booking integrations", "Snapshot & version control", "Full team training & documentation", "30-day post-launch support"].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-600 text-sm font-medium">
                       <CheckCircle2 size={18} className="text-brand-red shrink-0" strokeWidth={2.5} />
                       {item}

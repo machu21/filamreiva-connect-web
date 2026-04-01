@@ -159,7 +159,7 @@ export default function APIIntegrations() {
                 </h2>
                 <div className="h-1.5 w-20 bg-brand-red rounded-full mb-8" />
                 <ul className="space-y-4">
-                  {["CRM ↔ dialer two-way sync", "Lead source to pipeline routing", "Webhook-based real-time triggers", "Custom API endpoints when needed", "Error alerts & fallback logic", "Audit logs for every data event", "Cross-platform data consistency", "Ongoing integration maintenance"].map((item, i) => (
+                  {["Lead source to pipeline routing", "Webhook-based real-time triggers", "Custom API endpoints when needed", "Error alerts & fallback logic", "Audit logs for every data event", "Cross-platform data consistency", "Ongoing integration maintenance"].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-600 text-sm font-medium">
                       <CheckCircle2 size={18} className="text-brand-red shrink-0" strokeWidth={2.5} />
                       {item}
