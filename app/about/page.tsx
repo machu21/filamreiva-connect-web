@@ -17,17 +17,17 @@ const pillars = [
   {
     Icon: Brain,
     title: "Logic First",
-    desc: "We map the entire workflow before a single line of automation is written.",
+    desc: "We map the entire business architecture before a single line of code is deployed.",
   },
   {
     Icon: Zap,
-    title: "Scalable Tech",
-    desc: "Sub-account architectures that handle 10 leads or 10,000 without breaking.",
+    title: "Proprietary Tech",
+    desc: "Custom-built API bridges that handle 10 leads or 10,000 without breaking.",
   },
   {
     Icon: ShieldCheck,
     title: "Bug-Resistant",
-    desc: "Built-in safeguards and error handling to ensure your business never stops.",
+    desc: "Built-in safeguards and automated error handling to ensure your business never stops.",
   },
   {
     Icon: TrendingUp,
@@ -38,10 +38,10 @@ const pillars = [
 ];
 
 const beliefs = [
-  "Founders should spend their time closing deals, not fixing broken Zapier zaps.",
+  "Founders should spend their time closing deals, not fixing broken workflows.",
   "Automation should be invisible — it just works, every time.",
   "A system that can't scale is just an expensive mess with extra steps.",
-  "Real estate operators deserve enterprise-grade infrastructure without enterprise pricing.",
+  "Real estate operators deserve enterprise-grade infrastructure without the enterprise complexity.",
 ];
 
 const stats = [
@@ -76,8 +76,8 @@ export default function About() {
           </h1>
           <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
             FAR Agents was founded on a simple premise: founders should spend their time
-            closing deals and scaling revenue — not fixing broken Zapier zaps or manually
-            tagging leads in a CRM.
+            closing deals and scaling revenue — not troubleshooting internal systems or 
+            manually syncing data between applications.
           </p>
         </div>
       </section>
@@ -115,13 +115,14 @@ export default function About() {
               </h2>
               <div className="h-1.5 w-20 bg-brand-red rounded-full" />
               <p className="text-slate-600 leading-relaxed text-lg">
-                Most businesses hit a revenue ceiling because their internal systems are a mess.
-                Leads fall through the cracks, follow-ups are forgotten, and scaling requires
-                hiring more human capital to do repetitive data entry.
+                Most businesses hit a revenue ceiling because their internal systems are fragmented.
+                Leads fall through the cracks, follow-ups are inconsistent, and scaling requires
+                hiring more human capital just to perform repetitive data entry.
               </p>
               <p className="text-slate-600 leading-relaxed text-lg">
-                We step in to map, build, and deploy high-level GoHighLevel (GHL) infrastructures,
-                wired perfectly with N8N logic and AI bots. We don't just give you software —
+                We deploy the **FAR Infrastructure**—a custom-engineered ecosystem of 
+                private APIs and AI-driven logic. We don't just connect apps; we build 
+                a unified brain for your business. We don't just give you tools — 
                 we give you your time back.
               </p>
 
@@ -237,16 +238,16 @@ export default function About() {
               <div className="h-1.5 w-20 bg-brand-red rounded-full" />
               <p className="text-slate-600 leading-relaxed text-lg">
                 Real estate moves fast. Buyers and sellers don't wait for a manual follow-up.
-                We've built automation systems specifically for real estate operators — from
-                single-agent teams to multi-location brokerages.
+                We've built specialized automation architectures specifically for real estate 
+                operators — from high-performing teams to national brokerages.
               </p>
               <div className="grid gap-4 sm:grid-cols-2 pt-2">
                 {[
-                  "Buyer & seller funnel templates",
-                  "A2P/SMS compliance built-in",
-                  "AI-powered lead qualification",
-                  "CRM pipeline automation",
-                  "24/7 follow-up sequences",
+                  "Proprietary lead capture funnels",
+                  "AI lead qualification engines",
+                  "Automated pipeline distribution",
+                  "Persistent 24/7 engagement loops",
+                  "Direct API-to-CRM integrations",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-slate-600 font-medium">
                     <CheckCircle2 size={16} className="text-brand-red shrink-0" strokeWidth={2.5} />
@@ -270,8 +271,8 @@ export default function About() {
             <span className="text-brand-red italic">Invisible Engine</span>
           </h2>
           <p className="mt-6 text-white/60 leading-relaxed max-w-xl mx-auto">
-            Book a free 30-minute strategy call. We'll audit your current setup and show you
-            exactly where automation can unlock your next growth stage.
+            Book a strategy call with our engineers. We'll audit your current tech stack 
+            and show you exactly how our custom APIs can unlock your next growth stage.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button size="lg" variant="primary" className="px-10">
