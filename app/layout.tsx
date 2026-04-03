@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   },
   description: "We build the invisible engine for real estate operators. Custom CRM infrastructure, proprietary APIs, and automated workflows designed to scale revenue.",
   keywords: [
+    "CRM Automation",
+    "CRM Management",
     "Real Estate CRM Infrastructure", 
     "Proprietary Automation", 
     "Real Estate Operations Scaling", 

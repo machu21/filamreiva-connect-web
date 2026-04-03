@@ -11,7 +11,6 @@ export default function Home() {
   // 1. Define state at the top of the function
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 2. Return the JSX
   return (
     <>
       <main className="min-h-screen">
