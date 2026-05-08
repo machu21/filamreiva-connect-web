@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import '@/app/globals.css'
+import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: {
@@ -54,7 +54,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
-       <ChatBot />
+       <Script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69fe4ad65b108d3380faac08" data-source="WEB_USER"></Script>
       </body>
     </html>
   );

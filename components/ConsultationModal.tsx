@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Button from "./ui/Button";
 import confetti from "canvas-confetti";
-import { ChevronLeft, ChevronRight, Clock, Calendar, User, Mail, Phone, X, CheckCircle2, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, Calendar, User, Mail, X, CheckCircle2, Loader2 } from "lucide-react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -30,7 +30,6 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
   company: string;
   message: string;
 }
@@ -73,7 +72,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedPlan }: Mod
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>({
-    firstName: "", lastName: "", email: "", phone: "", company: "", message: "",
+    firstName: "", lastName: "", email: "", company: "", message: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState<string | null>(null);
@@ -91,7 +90,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedPlan }: Mod
         setStep("date");
         setSelectedDate(null);
         setSelectedTime(null);
-        setForm({ firstName:"", lastName:"", email:"", phone:"", company:"", message:"" });
+        setForm({ firstName:"", lastName:"", email:"", company:"", message:"" });
         setError(null);
       }, 300);
     }
@@ -342,19 +341,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedPlan }: Mod
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   className="w-full px-3 py-2.5 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                   placeholder="pat@company.com"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Phone <span className="text-slate-300 normal-case font-normal">(optional)</span>
-                </label>
-                <input
-                  type="tel"
-                  value={form.phone}
-                  onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                  className="w-full px-3 py-2.5 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
-                  placeholder="+1 (555) 000-0000"
                 />
               </div>
 

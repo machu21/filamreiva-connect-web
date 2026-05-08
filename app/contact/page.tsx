@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import ConsultationModal from "@/components/ConsultationModal";
-import { Mail, MapPin, Clock, ArrowRight, Phone, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 
 const contactDetails = [
   {
@@ -32,7 +32,6 @@ export default function Contact() {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
     crm: "",
     message: "",
     botTrap: "", // Added the honeypot to state here
@@ -60,7 +59,7 @@ export default function Contact() {
       if (!res.ok) throw new Error("Failed to submit form");
       setSuccess(true);
       // Reset form including botTrap
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", crm: "", message: "", botTrap: "" });
+      setFormData({ firstName: "", lastName: "", email: "", crm: "", message: "", botTrap: "" });
     } catch (err: any) {
       setError(err.message || "Something went wrong.");
     } finally {
@@ -207,20 +206,6 @@ export default function Contact() {
                       type="email"
                       className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
                       placeholder="pat@company.com"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Phone Number <span className="text-slate-300 normal-case font-normal">(optional)</span>
-                    </label>
-                    <input
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-xl bg-brand-gray/20 border border-transparent focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 outline-none transition text-sm text-brand-blue placeholder:text-slate-400"
-                      placeholder="+1 (555) 000-0000"
                     />
                   </div>
 
